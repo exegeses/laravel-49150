@@ -21,3 +21,16 @@ Route::get('/saludo', function ()
 {
     return 'hola mundo desde Laravel';
 });
+
+Route::get('/saludo.html', function ()
+{
+    $nombre = 'marcos';
+    $cenas = ['choripan', 'asado', 'milanesa con fritas', 'chaw fan'];
+
+    return view('primera',
+                    [
+                        'nombre' => $nombre,
+                        'cenas'  => $cenas
+                    ]
+            );
+});

@@ -41,3 +41,8 @@ Route::get('/regiones', function ()
     $regiones = DB::select('SELECT regID, regNombre FROM regiones');
     return view('segunda', [ 'regiones'=>$regiones ]);
 });
+
+Route::get('/inicio', function ()
+{
+    return view('inicio');
+});

@@ -74,3 +74,22 @@ Route::post('/agregarRegion', function ()
     return redirect('/adminRegiones')
                 ->with( [ 'mensaje'=>'Región: '.$regNombre.' agregada correctamente' ] );
 });
+###################################################
+###### CRUD de destinos
+Route::get('/adminDestinos', function ()
+{
+    //obtenemos listado de destinos
+    $destinos = DB::select('
+                        SELECT
+                            destID,
+                            destNombre,
+                            regNombre,
+                            destPrecio,
+                            destAsientos,
+                            destDisponibles
+                        FROM destinos as d
+			            INNER JOIN regiones as r
+                        ON d.regID = r.regID'
+                );
+    return view('adminDestinos', [ 'destinos'=>$destinos ]);
+});

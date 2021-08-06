@@ -110,6 +110,13 @@ Route::patch('/modificarRegion/', function ()
     return redirect('/adminRegiones')
         ->with( [ 'mensaje'=>'Región: '.$regNombre.' modificada correctamente' ] );
 });
+Route::get('/eliminarRegion/{id}', function ($id)
+{
+    $region = DB::table('regiones')
+                ->where('regID', $id)
+                ->first();
+    return view('eliminarRegion', [ 'region'=>$region ]);
+});
 
 ###################################################
 ###### CRUD de destinos

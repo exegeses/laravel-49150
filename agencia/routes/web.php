@@ -67,13 +67,50 @@ Route::post('/agregarRegion', function ()
                 INSERT INTO regiones
                             ( regNombre )
                         VALUE
-                            ( :manzana )',
+                            ( :regNombre )',
                             [ $regNombre ]
                 );
     //redirección con mensaje ok (flashing)
     return redirect('/adminRegiones')
                 ->with( [ 'mensaje'=>'Región: '.$regNombre.' agregada correctamente' ] );
 });
+Route::get('/modificarRegion/{id}', function ($id)
+{
+    //obtenemos una región por su ID
+    /*
+    $region = DB::select(
+                    'SELECT regID, regNombre
+                        FROM regiones
+                        WHERE regID = :id',
+                            [ $id ]
+            );
+    */
+    $region = DB::table('regiones')
+                    ->where('regID', $id)
+                    ->first();
+    return view('modificarRegion', [ 'region'=>$region ]);
+});
+Route::patch('/modificarRegion/', function ()
+{
+    $regID = $_POST['regID'];
+    $regNombre = $_POST['regNombre'];
+    //modificamos
+    /*
+    DB::update('
+                UPDATE regiones
+                    SET regNombre = :regNombre
+                    WHERE regID = :regID',
+                    [ $regNombre, $regID ]
+            );
+    */
+    DB::table('regiones')
+        ->where('regID', $regID)
+        ->update( [ 'regNombre'=>$regNombre ] );
+    //redirección con mensaje ok (flashing)
+    return redirect('/adminRegiones')
+        ->with( [ 'mensaje'=>'Región: '.$regNombre.' modificada correctamente' ] );
+});
+
 ###################################################
 ###### CRUD de destinos
 Route::get('/adminDestinos', function ()

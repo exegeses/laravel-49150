@@ -135,6 +135,7 @@ Route::delete('/eliminarRegion', function ()
 Route::get('/adminDestinos', function ()
 {
     //obtenemos listado de destinos
+    /*
     $destinos = DB::select('
                         SELECT
                             destID,
@@ -147,5 +148,16 @@ Route::get('/adminDestinos', function ()
 			            INNER JOIN regiones as r
                         ON d.regID = r.regID'
                 );
+    */
+    $destinos = DB::table('destinos as d')
+                        ->join('regiones as r', 'd.regID', '=', 'r.regID' )
+                        ->select('destID','destNombre', 'regNombre',
+                                  'destPrecio', 'destAsientos', 'destDisponibles')
+                        ->get();
+
     return view('adminDestinos', [ 'destinos'=>$destinos ]);
+});
+Route::get('/agregarDestino', function ()
+{
+    return view('agregarDestino');
 });

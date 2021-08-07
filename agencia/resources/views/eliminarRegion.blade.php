@@ -8,6 +8,8 @@
             Se eliminará la región:
             <span class="lead">{{ $region->regNombre }}</span>
             <form action="/eliminarRegion" method="post">
+            @method('delete')
+            @csrf
                 <input type="hidden" name="regNombre"
                        value="{{ $region->regNombre }}">
                 <input type="hidden" name="regID"
@@ -21,13 +23,11 @@
             </form>
         </div>
         <script>
-            /*
             Swal.fire(
                 'Advertencia',
                 'Su pulsa "Confirmar baja", se eliminará la región',
                 'warning'
             )
-             */
         </script>
 
     @endsection

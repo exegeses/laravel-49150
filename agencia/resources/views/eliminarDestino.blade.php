@@ -10,6 +10,7 @@
             <br>
             {{ $destino->regNombre }}.
             <form action="/eliminarDestino" method="post">
+                @method('delete')
                 @csrf
                 <input type="hidden" name="destNombre"
                        value="{{ $destino->destNombre }}">
@@ -24,13 +25,11 @@
             </form>
         </div>
         <script>
-            /*
             Swal.fire(
                 '¡Advertencia!',
                 'Si pulsa el botón "Confirmar baja", se eliminará el destino',
-                'error'
+                'warning'
             );
-             */
         </script>
 
     @endsection

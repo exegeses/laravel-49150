@@ -33,7 +33,7 @@
                     </a>
                 </td>
                 <td>
-                    <a href="/eliminarDestino/id" class="btn btn-outline-secondary">
+                    <a href="/eliminarDestino/{{ $destino->destID }}" class="btn btn-outline-secondary">
                         Eliminar
                     </a>
                 </td>

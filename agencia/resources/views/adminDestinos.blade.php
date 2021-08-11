@@ -28,7 +28,7 @@
                 <td>{{ $destino->regNombre }}</td>
                 <td>${{ $destino->destPrecio }}</td>
                 <td>
-                    <a href="/modificarDestino/id" class="btn btn-outline-secondary">
+                    <a href="/modificarDestino/{{ $destino->destID }}" class="btn btn-outline-secondary">
                         Modificar
                     </a>
                 </td>

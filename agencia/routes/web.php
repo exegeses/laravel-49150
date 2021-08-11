@@ -191,3 +191,42 @@ Route::post('/agregarDestino', function ()
     return redirect('/adminDestinos')
         ->with( [ 'mensaje'=>'Destino: '.$destNombre.' agregado correctamente' ] );
 });
+Route::get('/modificarDestino/{id}', function ($id)
+{
+    //obtenemos datos de un destino por su id
+    $destino = DB::table('destinos')
+                    ->where('destID', $id)->first();
+    //obtenemos listado de las regiones
+    $regiones = DB::table('regiones')->get();
+    //retornamos vista pasando los datos
+    return view('modificarDestino',
+                    [
+                        'destino'=>$destino,
+                        'regiones'=>$regiones
+                    ]
+            );
+});
+Route::patch('/modificarDestino', function ()
+{
+    //capturamos datos enviados por el form
+    $destNombre = $_POST['destNombre'];
+    $regID = $_POST['regID'];
+    $destPrecio = $_POST['destPrecio'];
+    $destAsientos = $_POST['destAsientos'];
+    $destDisponibles = $_POST['destDisponibles'];
+    $destID = $_POST['destID'];
+    //modificamos
+    DB::table('destinos')
+            ->where('destID', $destID)
+            ->update(
+                [
+                    'destNombre'=>$destNombre,
+                    'regID'=>$regID,
+                    'destPrecio'=>$destPrecio,
+                    'destAsientos'=>$destAsientos,
+                    'destDisponibles'=>$destDisponibles
+                ]
+            );
+    return redirect('/adminDestinos')
+        ->with( [ 'mensaje'=>'Destino: '.$destNombre.' modificado correctamente' ] );
+});

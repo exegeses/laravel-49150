@@ -15,9 +15,10 @@ class MarcaController extends Controller
     public function index()
     {
         //obtener listado de marcas
-        $marcas = Marca::all();
+        $marcas = Marca::paginate(7);
         //retornar vista con datos
         return view('adminMarcas', [ 'marcas'=>$marcas ]);
+
     }
 
     /**

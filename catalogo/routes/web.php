@@ -25,6 +25,7 @@ Route::post('/agregarMarca', [ MarcaController::class, 'store' ] );
 Route::get('/modificarMarca/{id}', [ MarcaController::class, 'edit' ]);
 Route::put('/modificarMarca', [ MarcaController::class, 'update' ]);
 Route::get('/eliminarMarca/{id}', [ MarcaController::class, 'confirmarBaja' ]);
+Route::delete('/eliminarMarca', [ MarcaController::class, 'destroy' ]);
 
 ##############################################
 ####### CRUD de categorias

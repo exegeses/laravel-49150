@@ -32,5 +32,7 @@ Route::delete('/eliminarMarca', [ MarcaController::class, 'destroy' ]);
 
 ##############################################
 ####### CRUD de productos
+use App\Http\Controllers\ProductoController;
+Route::get('/adminProductos', [ ProductoController::class, 'index' ]);
 
 

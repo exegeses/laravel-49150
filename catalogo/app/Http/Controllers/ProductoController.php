@@ -104,9 +104,20 @@ class ProductoController extends Controller
         $this->validarForm($request);
         //subir imagen *
         $prdImagen = $this->subirImagen($request);
-        //instanciamos, asignamos, guardamos
-        //redirección con mensaje ok
-        return 'pasó validación y guardaremos: '.$prdImagen;
+        //instanciamos, asignamos
+        $Producto = new Producto();
+        $Producto->prdNombre = $request->prdNombre;
+        $Producto->prdPrecio = $request->prdPrecio;
+        $Producto->idMarca = $request->idMarca;
+        $Producto->idCategoria = $request->idCategoria;
+        $Producto->prdPresentacion = $request->prdPresentacion;
+        $Producto->prdStock = $request->prdStock;
+        $Producto->prdImagen = $prdImagen;
+        //guardamos
+        $Producto->save();
+
+        return redirect('/adminProductos')
+            ->with( [ 'mensaje'=>'Producto: '.$request->prdNombre.' agregado correctamente.' ] );
     }
 
     /**

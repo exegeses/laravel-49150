@@ -56,5 +56,26 @@
 
         </div>
 
+        @if( $errors->any() )
+            <div class="alert alert-danger col-8 mx-auto">
+                <ul>
+                    @foreach( $errors->all() as $error )
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
+        <script>
+            let campo = document.querySelector('input[name="prdImagen"]');
+            let caja  = document.querySelector('.custom-file-label');
+
+            campo.addEventListener('change', cambiarTexto );
+            function cambiarTexto()
+            {
+                caja.innerText = campo.value;
+            }
+        </script>
+
    @endsection
 

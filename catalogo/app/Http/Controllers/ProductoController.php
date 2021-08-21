@@ -56,21 +56,20 @@ class ProductoController extends Controller
                 'prdNombre.required'=>'El campo "Nombre del producto" es obligatorio.',
                 'prdNombre.min'=>'El campo "Nombre del producto" debe tener como mínimo 2 caractéres.',
                 'prdNombre.max'=>'El campo "Nombre" debe tener 30 caractéres como máximo.',
-                'prdPrecio.required'=>'Complete el campo Precio',
-                'prdPrecio.numeric'=>'Complete el campo Precio con un número',
-                'prdPrecio.min'=>'Complete el campo Precio con un número positivo',
-                'idMarca.required'=>'Seleccione una marca',
-                'idCategoria.required'=>'Seleccione una categoría',
-                'prdPresentacion.required'=>'Complete el campo Presentación',
+                'prdPrecio.required'=>'Complete el campo Precio.',
+                'prdPrecio.numeric'=>'Complete el campo Precio con un número.',
+                'prdPrecio.min'=>'Complete el campo Precio con un número positivo.',
+                'idMarca.required'=>'Seleccione una marca.',
+                'idCategoria.required'=>'Seleccione una categoría.',
+                'prdPresentacion.required'=>'Complete el campo Presentación.',
                 'prdPresentacion.min'=>'Complete el campo Presentación con al menos 3 caractéres',
-                'prdPresentacion.max'=>'Complete el campo Presentación con 150 caractérescomo máxino',
-                'prdStock.required'=>'Complete el campo Stock',
-                'prdStock.integer'=>'Complete el campo Stock con un número entero',
-                'prdStock.min'=>'Complete el campo Stock con un número positivo',
+                'prdPresentacion.max'=>'Complete el campo Presentación con 150 caractérescomo máxino.',
+                'prdStock.required'=>'Complete el campo Stock.',
+                'prdStock.integer'=>'Complete el campo Stock con un número entero.',
+                'prdStock.min'=>'Complete el campo Stock con un número positivo.',
                 'prdImagen.mimes'=>'Debe ser una imagen.',
                 'prdImagen.max'=>'Debe ser una imagen de 2MB como máximo.'
             ]
-
         );
     }
 
@@ -83,10 +82,11 @@ class ProductoController extends Controller
     public function store(Request $request)
     {
         //validamos
-
+        $this->validarForm($request);
         //subir imagen *
         //instanciamos, asignamos, guardamos
         //redirección con mensaje ok
+        return 'pasó validación';
     }
 
     /**

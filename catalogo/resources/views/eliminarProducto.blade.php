@@ -10,15 +10,18 @@
             </div>
             <div class="col text-danger align-self-center">
             <form action="/eliminarProducto" method="post">
-
-                <h2>Nombre del producto</h2>
-                Categoría: catNombre  <br>
-                Marca:  mkNombre <br>
-                Presentación: prdPresentacion <br>
-                Precio: $ prdPrecio
+            @method('delete')
+            @csrf
+                <h2>{{ $Producto->prdNombre }}</h2>
+                Categoría: {{ $Producto->getCategoria->catNombre }}<br>
+                Marca:  {{ $Producto->getMarca->mkNombre }} <br>
+                Presentación: {{ $Producto->prdPresentacion }} <br>
+                Precio: ${{ $Producto->prdPrecio }}
 
                 <input type="hidden" name="idProducto"
-                       value="idProducto">
+                       value="{{ $Producto->idProducto }}">
+                <input type="hidden" name="prdNombre"
+                       value="{{ $Producto->prdNombre }}">
                 <button class="btn btn-danger btn-block my-3">Confirmar baja</button>
                 <a href="/adminProductos" class="btn btn-outline-secondary btn-block">
                     Volver a panel
